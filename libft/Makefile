@@ -6,15 +6,15 @@
 #    By: dmdemirk <dmdemirk@student.42london.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/19 12:20:29 by dmdemirk          #+#    #+#              #
-#    Updated: 2023/11/20 18:29:24 by dmdemirk         ###   ########.fr        #
+#    Updated: 2023/12/12 10:56:22 by dmdemirk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	libft.a
+NAME		=	libft.a
 
-CC				=	cc
+CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
-AR				=	ar rcs
+AR			=	ar rcs
 INCLUDE		=	libft.h
 
 SOURCES		=	ft_atoi.c			\
