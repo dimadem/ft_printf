@@ -34,7 +34,7 @@ int	ft_putstring(char *string)
 
 int	ft_putpercent(void)
 {
-	write(1, "%", 2);
+	write(1, "%", 1);
 	return (1);
 }
 

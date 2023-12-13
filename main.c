@@ -5,7 +5,7 @@ int main(void)
 	int   result;
 	char character = 'c';
 	char  string[] = "string";
-	int   number = 32;
+	int   number = 0;
 	char  *pointer;
 	int   *pointer_int;
 	char format_all[]="\npointer char  -> %p\npointer int   -> %p\nformat string -> %s\nformat digit  -> %d\nformat hexadecimal lowercase -> %x\nformat hexadecimal Uppercase -> %X\ncase   -> %%";
@@ -78,7 +78,17 @@ int main(void)
 
 	printf("-------------------------------\n");
 	printf("\n-");
-	printf("\nft_printf case hexadecimal lowercase\n");
+	printf("\nft_printf case unsigned\n");
+	result = ft_printf("%u", number);
+	printf("\nlength -> %d\n", result);
+
+	printf("\n-");
+	printf("\nprintf case unsigned\n");
+	result = printf("%u", number);
+	printf("\nlength -> %d\n", result);
+	
+	printf("-------------------------------\n");
+    printf("\nft_printf case hexadecimal lowercase\n");
 	result = ft_printf("%x", number);
 	printf("\nlength -> %d\n", result);
 
@@ -101,12 +111,12 @@ int main(void)
 	printf("-------------------------------\n");
 	printf("\n-");
 	printf("\nft_printf case percent\n");
-	result = ft_printf("%%");
+	result = ft_printf(" %% %% ");
 	printf("\nlength -> %d\n", result);
 
 	printf("\n-");
 	printf("\nprintf case percent\n");
-	result = printf("%%");
+	result = printf(" %% %% ");
 	printf("\nlength -> %d\n", result);
 
 	printf("-------------------------------\n");

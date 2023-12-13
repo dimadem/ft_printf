@@ -34,9 +34,9 @@ char	*ft_uitoa(unsigned int input_number)
 	number = (char *)malloc(sizeof(char) * (length + 1));
 	if (!number)
 		return (0);
-	while (input_number != 0)
+	while (input_number > 0)
 	{
-		number[length - 1] = input_number % 10 + 48;
+		number[length - 1] = input_number % 10 + '0';
 		input_number = input_number / 10;
 		length--;
 	}
@@ -50,7 +50,7 @@ int	ft_putunsigned(unsigned int input_number)
 
 	number = ((void *)0);
 	count = 0;
-	if (number == 0)
+	if (input_number == 0)
 		count += write(1, "0", 1);
 	else
 	{

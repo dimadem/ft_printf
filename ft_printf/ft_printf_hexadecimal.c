@@ -53,7 +53,7 @@ int	ft_puthexadecimal(unsigned int input_number, const char format)
 
 	count = 0;
 	if (input_number == 0)
-		ft_putchar(0);
+count += write(1, "0", 1);
 	else
 		ft_print_hexadecimal(input_number, format);
 	count += ft_hexlen(input_number);
