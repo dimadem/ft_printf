@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
-#include "../include/libft.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 static int	ft_hexlen(unsigned int input_number)
 {

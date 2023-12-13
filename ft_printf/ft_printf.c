@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
-#include "../include/libft.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_putformat(va_list *args, const char format)
 {

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
-#include "../include/libft.h"
+#include "ft_printf.h"
+#include "libft.h"
 #include <stdint.h>
 
 int	ft_pointerlen(uintptr_t pointer)

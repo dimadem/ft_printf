@@ -31,9 +31,9 @@ AR				=	ar rcs
 
 # Variables
 
-INCLUDE_DIR		=	./include/
+INCLUDE_DIR		=	./include
 OBJ_DIR			=	./obj
-PRINTF_DIR		=	./ft_printf/
+PRINTF_DIR		=	./ft_printf
 LIBFT_DIR		=	./libft
 LIBFT			=	$(LIBFT_DIR)/libft.a
 
@@ -51,31 +51,34 @@ OBJS				=	$(FT_PRINTF_SRC_FILES:%.c=$(OBJ_DIR)/%.o)
 
 all:				$(NAME)
 
-$(NAME):			$(LIBFT) $(OBJ_DIR) $(OBJS)
+$(NAME):	$(LIBFT) $(OBJ_DIR) $(OBJS)
 					@cp $(LIBFT) $(NAME)
 					$(AR) $(NAME) $(OBJS)
+					@echo "$(GREEN)FT_PRINTF compiled$(DEF_COLOR)"
 
 $(LIBFT):
-					@cd $(LIBFT_DIR) && make && echo "$(GREEN)libft compiled$(DEF_COLOR)"
+					@echo "$(YELLOW)LIBFT compilation process"
+					@cd $(LIBFT_DIR) && make && echo "$(GREEN)LIBFT compiled$(DEF_COLOR)"
 
 $(OBJ_DIR):
+					@echo "$(YELLOW)FT_PRINTF compilation process"
 					@mkdir -pv $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:		$(PRINTF_DIR)/%.c
-					$(CC) $(CFLAGS) -c $< -o $@
+					$(CC) $(CFLAGS) -c $< -o $@ -I$(INCLUDE_DIR)
 
 clean:
 					@$(RM) -rf $(OBJ_DIR)
 					@cd $(LIBFT_DIR) && make clean
-					@echo "$(BLUE)ft_printf object files cleaned!$(DEF_COLOR)"
+					@echo "$(RED)FT_PRINTF object files cleaned!$(DEF_COLOR)"
 
 fclean:				clean
 					@$(RM) -f $(NAME)
 					@$(RM) -f $(LIBFT)
-					@echo "$(CYAN)ft_printf executable files cleaned!$(DEF_COLOR)"
-					@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
+					@echo "$(RED)FT_PRINTF executable files cleaned!$(DEF_COLOR)"
+					@echo "$(RED)LIBFT executable files cleaned!$(DEF_COLOR)"
 
 re:					fclean all
-					@echo "$(GREEN)cleaned and rebuilt everything for ft_printf!$(DEF_COLOR)"
+	@echo "$(CYAN)cleaned and rebuilt everything for ft_printf!$(DEF_COLOR)"
 
 .PHONY:				all clean fclean re

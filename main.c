@@ -1,4 +1,4 @@
-#include "./include/libftprintf.h"
+#include "./include/ft_printf.h"
 
 int main(void)
 {
