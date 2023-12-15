@@ -6,7 +6,7 @@
 /*   By: dmdemirk <dmdemirk@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:50:59 by dmdemirk          #+#    #+#             */
-/*   Updated: 2023/12/11 13:27:19 by dmdemirk         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:35:39 by dmdemirk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,22 @@ int	ft_putstring(char *string)
 	int	counter;
 
 	counter = 0;
-	while (*string)
+	if(!string)
 	{
-		write(1, string++, 1);
-		counter++;
+		string = "(null)";
+		while (*string)
+		{
+			write(1, string++, 1);
+			counter++;
+		}
+		return (counter);
 	}
+	else
+		while(*string)
+		{
+			write(1, string++, 1);
+			counter++;
+		}
 	return (counter);
 }
 

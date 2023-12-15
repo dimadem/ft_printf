@@ -121,8 +121,18 @@ int main(void)
 
 	printf("-------------------------------\n");
 	printf("\n-");
+	printf("\nft_printf case string NULL\n");
+	result = ft_printf(" %s NULL ",  NULL);
+	printf("\nlength -> %d\n", result);
+
+	printf("\n-");
+	printf("\nprintf case string NULL\n");
+	result = printf(" %s NULL ", NULL);
+	printf("\nlength -> %d\n", result);
+	printf("-------------------------------\n");
+	printf("\n-");
 	printf("\nft_printf case all\n");
-	result = ft_printf(format_all, pointer, pointer_int, string, number, number, number);
+	//result = ft_printf(format_all, pointer, pointer_int, string, number, number, number);
 	printf("\nlength -> %d\n", result);
 
 	printf("\n-");

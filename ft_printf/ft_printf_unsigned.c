@@ -6,7 +6,7 @@
 /*   By: dmdemirk <dmdemirk@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:51:24 by dmdemirk          #+#    #+#             */
-/*   Updated: 2023/12/11 13:42:52 by dmdemirk         ###   ########.fr       */
+/*   Updated: 2023/12/15 16:38:21 by dmdemirk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ int	ft_putunsigned(unsigned int input_number)
 	int		count;
 	char	*number;
 
-	number = ((void *)0);
 	count = 0;
+		number = ft_uitoa(input_number);
 	if (input_number == 0)
 		count += write(1, "0", 1);
 	else
 	{
-		number = ft_uitoa(input_number);
 		count += ft_putstring(number);
 		free(number);
 	}
