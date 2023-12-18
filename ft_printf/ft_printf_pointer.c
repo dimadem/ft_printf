@@ -6,7 +6,7 @@
 /*   By: dmdemirk <dmdemirk@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:50:49 by dmdemirk          #+#    #+#             */
-/*   Updated: 2023/12/12 14:55:55 by dmdemirk         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:29:17 by dmdemirk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 #include "libft.h"
 #include <stdint.h>
 
-int	ft_pointerlen(uintptr_t pointer)
+static void	ft_pointerlen(uintptr_t pointer, int *counter)
 {
-	int	counter;
-
-	counter = 0;
 	while (pointer != 0)
 	{
 		pointer = pointer / 16;
-		counter++;
+		(*counter)++;
 	}
-	return (counter);
 }
 
 void	ft_printpointer(uintptr_t pointer)
@@ -43,18 +39,14 @@ void	ft_printpointer(uintptr_t pointer)
 	}
 }
 
-int	ft_putpointer(unsigned long long address)
+void	ft_putpointer(unsigned long long address, int *counter)
 {
-	int	counter;
-
-	counter = 0;
 	if (address == 0)
-		counter += write(1, "(nil)", 5);
+		(*counter) += write(1, "(nil)", 5);
 	else
 	{
-		counter += write(1, "0x", 2);
+		(*counter) += write(1, "0x", 2);
 		ft_printpointer(address);
-		counter += ft_pointerlen(address);
+		ft_pointerlen(address, counter);
 	}
-	return (counter);
 }

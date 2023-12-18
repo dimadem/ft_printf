@@ -6,57 +6,34 @@
 /*   By: dmdemirk <dmdemirk@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:50:59 by dmdemirk          #+#    #+#             */
-/*   Updated: 2023/12/15 15:35:39 by dmdemirk         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:18:09 by dmdemirk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-int	ft_putchar(int c)
+void	ft_putchar(int c, int *counter)
 {
-	write(1, &c, 1);
-	return (1);
+	(*counter) += write(1, &c, 1);
 }
 
-int	ft_putstring(char *string)
+void	ft_putstring(const char *string, int *counter)
 {
-	int	counter;
+	int	i;
 
-	counter = 0;
+	i = 0;
 	if(!string)
-	{
 		string = "(null)";
-		while (*string)
-		{
-			write(1, string++, 1);
-			counter++;
-		}
-		return (counter);
-	}
-	else
-		while(*string)
-		{
-			write(1, string++, 1);
-			counter++;
-		}
-	return (counter);
+	while(string[i])
+			(*counter) += write(1 , &string[i++], 1);
 }
 
-int	ft_putpercent(void)
+void	ft_putnbr(int number, int *counter)
 {
-	write(1, "%", 1);
-	return (1);
-}
-
-int	ft_putnbr(int number)
-{
-	int		length;
 	char	*temp_number;
 
-	length = 0;
 	temp_number = ft_itoa(number);
-	length = ft_putstring(temp_number);
+	ft_putstring(temp_number, counter);
 	free(temp_number);
-	return (length);
 }

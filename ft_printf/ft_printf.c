@@ -6,57 +6,54 @@
 /*   By: dmdemirk <dmdemirk@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:50:40 by dmdemirk          #+#    #+#             */
-/*   Updated: 2023/12/15 15:11:53 by dmdemirk         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:15:49 by dmdemirk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-int	ft_putformat(va_list *args, const char format)
+static void	ft_putformat(va_list *args, char format, int *counter)
 {
-	int	count;
-
-	count = 0;
 	if (format == 'c')
-		count += ft_putchar(va_arg(*args, int));
+		ft_putchar(va_arg(*args, int), counter);
 	else if (format == 's')
-		count += ft_putstring(va_arg(*args, char *));
+		ft_putstring(va_arg(*args, char *), counter);
 	else if (format == 'p')
-		count += ft_putpointer(va_arg(*args, unsigned long long));
+		ft_putpointer(va_arg(*args, unsigned long long), counter);
 	else if (format == 'd' || format == 'i')
-		count += ft_putnbr(va_arg(*args, int));
+		ft_putnbr(va_arg(*args, int), counter);
 	else if (format == 'u')
-		count += ft_putunsigned(va_arg(*args, unsigned int));
+		ft_putunsigned(va_arg(*args, unsigned int), counter);
 	else if (format == 'x' || format == 'X')
-		count += ft_puthexadecimal(va_arg(*args, unsigned int), format);
+		ft_puthexadecimal(va_arg(*args, unsigned int), format, counter);
 	else if (format == '%')
-		count += ft_putpercent();
-	else
-		count = 1;
-	return (count);
+		ft_putstring("%", counter);
+}
+
+static void	ft_setformat(va_list *args, const char *string, int *counter)
+{
+	int	index;
+
+	index = 0;
+	while(string[index])
+	{
+		if (string[index] == '%')
+			ft_putformat(args, string[++index], counter);
+		else
+			ft_putstring(&string[index], counter);
+		index++;
+	}
 }
 
 int	ft_printf(const char *string, ...)
 {
-	int		index;
-	int		count;
 	va_list	args;
+	int		counter;
 
-	index = 0;
-	count = 0;
+	counter = 0;
 	va_start(args, string);
-	while (string[index] != '\0')
-	{
-		if (string[index] == '%')
-		{
-			count += ft_putformat(&args, string[index + 1]);
-			index++;
-		}
-		else
-			count += ft_putchar(string[index]);
-		index++;
-	}
+	ft_setformat(&args, string, &counter);
 	va_end(args);
-	return (count);
+	return (counter);
 }

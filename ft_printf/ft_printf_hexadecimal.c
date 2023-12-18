@@ -6,24 +6,20 @@
 /*   By: dmdemirk <dmdemirk@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:51:08 by dmdemirk          #+#    #+#             */
-/*   Updated: 2023/12/11 13:14:17 by dmdemirk         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:28:02 by dmdemirk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-static int	ft_hexlen(unsigned int input_number)
+static void	ft_hexlen(unsigned int input_number,int *counter)
 {
-	int	counter;
-
-	counter = 0;
 	while (input_number != 0)
 	{
 		input_number = input_number / 16;
-		counter++;
+		(*counter)++;
 	}
-	return (counter);
 }
 
 static void	ft_print_hexadecimal(unsigned int input_number, const char format)
@@ -47,15 +43,12 @@ static void	ft_print_hexadecimal(unsigned int input_number, const char format)
 	}
 }
 
-int	ft_puthexadecimal(unsigned int input_number, const char format)
+void	ft_puthexadecimal(unsigned int input_number,
+				const char format, int *counter)
 {
-	int	count;
-
-	count = 0;
 	if (input_number == 0)
-count += write(1, "0", 1);
+		counter += write(1, "0", 1);
 	else
 		ft_print_hexadecimal(input_number, format);
-	count += ft_hexlen(input_number);
-	return (count);
+	ft_hexlen(input_number, counter);
 }

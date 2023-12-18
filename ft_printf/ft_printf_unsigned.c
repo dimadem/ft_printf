@@ -6,29 +6,27 @@
 /*   By: dmdemirk <dmdemirk@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:51:24 by dmdemirk          #+#    #+#             */
-/*   Updated: 2023/12/15 16:38:21 by dmdemirk         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:02:05 by dmdemirk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_unumlen(unsigned int input_number)
+static int	ft_unumlen(unsigned int input_number)
 {
-	int	count;
-
-	count = 0;
+	int	length;
 	while (input_number != 0)
 	{
 		input_number = input_number / 10;
-		count++;
+		length++;
 	}
-	return (count);
+	return (length);
 }
 
-char	*ft_uitoa(unsigned int input_number)
+static char	*ft_uitoa(unsigned int input_number)
 {
 	char	*number;
-	int		length;
+	char	length;
 
 	length = ft_unumlen(input_number);
 	number = (char *)malloc(sizeof(char) * (length + 1));
@@ -43,19 +41,16 @@ char	*ft_uitoa(unsigned int input_number)
 	return (number);
 }
 
-int	ft_putunsigned(unsigned int input_number)
+void	ft_putunsigned(unsigned int input_number, int *counter)
 {
-	int		count;
 	char	*number;
 
-	count = 0;
-		number = ft_uitoa(input_number);
 	if (input_number == 0)
-		count += write(1, "0", 1);
+		ft_putchar('0', counter);
 	else
 	{
-		count += ft_putstring(number);
+		number = ft_uitoa(input_number);
+		ft_putstring(number, counter);
 		free(number);
 	}
-	return (count);
 }

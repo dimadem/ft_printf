@@ -6,7 +6,7 @@
 #    By: dmdemirk <dmdemirk@student.42london.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 12:40:43 by dmdemirk          #+#    #+#              #
-#    Updated: 2023/12/12 15:34:31 by dmdemirk         ###   ########.fr        #
+#    Updated: 2023/12/18 12:28:14 by dmdemirk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ WHITE		=	\033[0;97m
 # Actions
 
 CC				=	cc
-CFLAGS			=	-Wall -Werror -Wextra
+CFLAGS			=	-Wall -Werror -Wextra -g
 RM				=	rm -rf
 AR				=	ar rcs
 
