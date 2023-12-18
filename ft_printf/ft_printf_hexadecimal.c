@@ -47,7 +47,7 @@ void	ft_puthexadecimal(unsigned int input_number,
 				const char format, int *counter)
 {
 	if (input_number == 0)
-		counter += write(1, "0", 1);
+		(*counter) += write(1, "0", 1);
 	else
 		ft_print_hexadecimal(input_number, format);
 	ft_hexlen(input_number, counter);
