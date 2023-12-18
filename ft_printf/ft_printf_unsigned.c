@@ -11,46 +11,29 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
-static int	ft_unumlen(unsigned int input_number)
+static void ft_u_itoa(unsigned int input_number, int *counter)
 {
-	int	length;
-	while (input_number != 0)
-	{
-		input_number = input_number / 10;
-		length++;
-	}
-	return (length);
-}
+    int i;
 
-static char	*ft_uitoa(unsigned int input_number)
-{
-	char	*number;
-	char	length;
-
-	length = ft_unumlen(input_number);
-	number = (char *)malloc(sizeof(char) * (length + 1));
-	if (!number)
-		return (0);
-	while (input_number > 0)
-	{
-		number[length - 1] = input_number % 10 + '0';
-		input_number = input_number / 10;
-		length--;
-	}
-	return (number);
+    i = 0;
+    if(input_number > 9)
+    {
+        ft_u_itoa(input_number / 10, counter);
+        ft_putchar(input_number % 10 + '0', counter);
+        i++;
+    }
+    else
+        ft_putchar(input_number + '0', counter);
 }
 
 void	ft_putunsigned(unsigned int input_number, int *counter)
 {
-	char	*number;
-
-	if (input_number == 0)
-		ft_putchar('0', counter);
-	else
-	{
-		number = ft_uitoa(input_number);
-		ft_putstring(number, counter);
-		free(number);
-	}
+    if (input_number == 0)
+        ft_putchar('0', counter);
+    else
+    {
+        ft_u_itoa(input_number, counter);
+    }
 }

@@ -1,8 +1,5 @@
 #include "./include/ft_printf.h"
 
-
-
-
 void	ft_case_character(char character)
 {
 	int				result;
@@ -112,12 +109,12 @@ void	ft_case_unsigned(unsigned int number)
 	printf("-------------------------------\n");
 	printf("\n-");
 	printf("\nft_printf case unsigned\n");
-	result = ft_printf("%u\n", (unsigned int)number);
+	result = ft_printf("%u", number);
 	printf("\nlength -> %d\n", result);
 
 	printf("\n-");
 	printf("\nprintf case unsigned\n");
-	result = printf("%u", (unsigned int)number);
+	result = printf("%u", number);
 	printf("\nlength -> %d\n", result);
 }
 
@@ -183,20 +180,20 @@ int main(void)
 	int				result;
 	char			character = 'c';
 	char			string[] = "string";
-	int				number = 0;
+	int				number = -1;
 	char			*pointer;
 	int				*pointer_int;
 	char			format_all[]="\npointer char  -> %p\npointer int   -> %p\nformat string -> %s\nformat digit  -> %d\nformat hexadecimal lowercase -> %x\nformat hexadecimal Uppercase -> %X\ncase   -> %%";
 
-//	ft_case_character(character);
-//	ft_case_string(string);
-//	ft_case_pointer(pointer);
-//	ft_case_pointer_int(pointer_int);
-//	ft_case_decimal(number);
-//	ft_case_integer(number);
-//	ft_case_unsigned(number);
+	ft_case_character(character);
+    ft_case_string(string);
+	ft_case_pointer(pointer);
+	ft_case_pointer_int(pointer_int);
+	ft_case_decimal(number);
+	ft_case_integer(number);
+	ft_case_unsigned(number);
 	ft_case_hexadecimal_lowercase(number);
 	ft_case_hexadecimal_uppercase(number);
-//	ft_case_percent();
-//	ft_case_format_all(format_all, pointer, pointer_int, string, number);
+	ft_case_percent();
+	ft_case_format_all(format_all, pointer, pointer_int, string, number);
 }
