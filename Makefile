@@ -64,7 +64,7 @@ $(SRC_DIR)/%.o:		$(SRC_DIR)/%.c
 					$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 clean:
-					@$(RM) -rf $(OBJ_DIR)
+					@cd $(SRC_DIR) && $(RM) -rf *.o
 					@cd $(LIBFT_DIR) && make clean
 					@echo "$(RED)FT_PRINTF object files cleaned!$(DEF_COLOR)"
 
