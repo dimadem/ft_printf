@@ -30,10 +30,7 @@ RM				=	rm -rf
 AR				=	ar rcs
 
 # Variables
-
-INCLUDE_DIR		=	./include
-OBJ_DIR			=	./obj
-PRINTF_DIR		=	./ft_printf
+SRC_DIR			=	./src
 LIBFT_DIR		=	./libft
 LIBFT			=	$(LIBFT_DIR)/libft.a
 
