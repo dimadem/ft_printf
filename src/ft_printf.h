@@ -18,6 +18,7 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include <stdio.h> // printf
+# include "../external/libft/src/libft.h"
 
 int		ft_printf(const char *string, ...);
 void	ft_putchar(int c, int *counter);
