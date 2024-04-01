@@ -11,27 +11,26 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
-void	ft_putchar(int c, int *counter)
+void ft_putchar(int c, int *counter)
 {
 	(*counter) += write(1, &c, 1);
 }
 
-void	ft_putstring(const char *string, int *counter)
+void ft_putstring(const char *string, int *counter)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	if(!string)
+	if (!string)
 		string = "(null)";
-	while(string[i])
-			(*counter) += write(1 , &string[i++], 1);
+	while (string[i] != '\0')
+		(*counter) += write(1, &string[i++], 1);
 }
 
-void	ft_putnbr(int number, int *counter)
+void ft_putnbr(int number, int *counter)
 {
-	char	*temp_number;
+	char *temp_number;
 
 	temp_number = ft_itoa(number);
 	ft_putstring(temp_number, counter);
