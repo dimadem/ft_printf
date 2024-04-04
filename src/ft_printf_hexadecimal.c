@@ -6,14 +6,14 @@
 /*   By: dmdemirk <dmdemirk@student.42london.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:51:08 by dmdemirk          #+#    #+#             */
-/*   Updated: 2023/12/18 16:28:02 by dmdemirk         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:29:26 by dmdemirk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-static void	ft_hexlen(unsigned int input_number,int *counter)
+static void	ft_hexlen(unsigned int input_number, int *counter)
 {
 	while (input_number != 0)
 	{
